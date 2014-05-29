@@ -1,0 +1,37 @@
+body {
+    width: 960px;
+    margin: 2em auto 0;
+}
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+label {
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.25em;
+}
+
+#sandbox {
+    margin-top: 40%;
+    text-align: center;
+}
+
+.bar {
+    display: inline-block;
+    width: 150px;
+    margin: 0 25px;
+    position: relative;
+}
+
+.bar > div {
+    width: 100%;
+    position: absolute;
+    background: teal;
+}
