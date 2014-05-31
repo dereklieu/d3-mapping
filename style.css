@@ -23,15 +23,20 @@ label {
     text-align: center;
 }
 
-.bar {
-    display: inline-block;
-    width: 150px;
-    margin: 0 25px;
-    position: relative;
+#sandbox svg {
+    margin-top: -40%;
 }
 
-.bar > div {
-    width: 100%;
-    position: absolute;
-    background: teal;
+.ball {
+    fill: red;
+    cursor: pointer;
+}
+
+.label {
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1em;
+    stroke: #fff;
+    fill: #fff;
+    text-anchor: middle;
+    cursor: pointer;
 }
