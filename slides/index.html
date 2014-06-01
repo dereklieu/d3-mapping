@@ -1,0 +1,45 @@
+<!dOCTYPE html>
+<HTML lang="en" data-ng-app="talkyApp">
+<HEAD>
+    <meta charset="utf-8">
+    <title>Mapping all the way with d3</title>
+    <link href="http://fonts.googleapis.com/css?family=Duru+Sans|Crete+Round:400,400italic" rel="stylesheet" type="text/css">
+    <link href="css/visibility.css" rel="stylesheet" type="text/css" />
+</HEAD>
+
+<BODY data-ng-controller="SlideCtrl" data-dl-keydown data-on="current" data-total="length">
+
+    <div id="app-container" class="whole">
+
+        <div class="whole">
+
+            <!-- slides -->
+            <div data-ng-repeat="slide in slides" data-ng-show="current == $index" data-ng-class="slide.cls" class="relative slide">
+                <div data-ng-if="slide.imgUrl" class="img-wrap">
+                    <img data-ng-src="{{slide.imgUrl}}" />
+                </div>
+                <h1 data-ng-if="slide.hero" class="hero">{{slide.hero}}</h1>
+                <h1 data-ng-if="slide.title" class="mid">{{slide.title}}</h1>
+                <h2 data-ng-if="slide.decks" data-ng-repeat="deck in slide.decks">{{deck}}</h2>
+            </div>
+
+        </div>
+
+        <!-- timer -->
+        <!-- div data-dl-timer data-duration="300000" data-on="current"></div -->
+
+        <!-- captions -->
+        <div data-dl-caption data-copy="slides[current].cap"></div>
+
+    </div>
+
+    <script src="lib/js/jquery/jquery-1.11.0.js" type="text/javascript"></script>
+    <script src="lib/js/angular/angular.js" type="text/javascript"></script>
+    <script src="lib/js/angular/angular-animate.js" type="text/javascript"></script>
+
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/services.js" type="text/javascript"></script>
+    <script src="js/controllers.js" type="text/javascript"></script>
+    <script src="js/directives.js" type="text/javascript"></script>
+</BODY>
+</HTML>

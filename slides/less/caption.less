@@ -1,0 +1,40 @@
+@capheight: 80px;
+
+.caption {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: @capheight;
+
+    -webkit-transition: 400ms ease-out all;
+    transition: 400ms ease-out all;
+
+    bottom: -@capheight;
+
+    background: #333333;
+
+    p {
+        color: #FFFFFF;
+        margin: 14px 4em 0;
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+.caption.above {
+    bottom: 0;
+}
+
+.toggle-cap {
+
+    background: #333333;
+
+    position: absolute;
+    top: -56px;
+    height: 44px;
+
+    text-align: center;
+    right: 8%;
+
+    cursor: pointer;
+}

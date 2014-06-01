@@ -1,0 +1,51 @@
+.slide {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: @timer-height 0 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding-top: @timer-height;
+
+    -webkit-transition: 200ms ease-out all;
+    transition: 200ms ease-out all;
+
+    > h1, h2 {
+        margin: 0.67em 0 0.67em 8%;
+    }
+}
+
+.slide.ng-hide-add, .slide.ng-hide-remove {
+    display: block!important;
+}
+
+.slide.ng-hide-add, .slide.ng-hide-remove-active {
+    opacity: 1;
+    top: 0;
+}
+
+.slide.ng-hide-add-active, .slide.ng-hide-remove {
+    -webkit-transition: 100ms ease-out all;
+    transition: 100ms ease-out all;
+    opacity: 0;
+    top: 5%;
+}
+
+.img-wrap {
+    position: absolute;
+    left: 0;
+    top: @timer-height;
+    width: 100%;
+    height: 100%;
+
+    > img {
+        width: 100%;
+    }
+}
+
+.hero {
+    text-align: center;
+    padding-top: 10%;
+}

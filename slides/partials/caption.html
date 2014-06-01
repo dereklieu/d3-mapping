@@ -1,0 +1,9 @@
+<div class="caption" data-ng-init="showCaption = true" data-ng-class="{'above': showCaption}">
+    <div class="relative">
+        <p>{{copy}}</p>
+        <div class="toggle-cap" data-ng-click="showCaption =! showCaption">
+            <p data-ng-show="!showCaption">Show Text</p>
+            <p data-ng-show="showCaption">Hide Text</p>
+        </div>
+    </div>
+</div>
