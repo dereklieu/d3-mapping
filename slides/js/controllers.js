@@ -3,9 +3,10 @@
 angular.module('talkyApp.controllers', [])
 
 .controller('SlideCtrl', ['$scope', 'slideData', function($scope, slideData) {
+    $scope.images = 'img/'
     $scope.slides = slideData;
     $scope.length = $scope.slides.length;
-    $scope.current = 0;
+    $scope.current = $scope.length - 1;
 }])
 
 ;

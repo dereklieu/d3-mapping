@@ -16,7 +16,7 @@
             <!-- slides -->
             <div data-ng-repeat="slide in slides" data-ng-show="current == $index" data-ng-class="slide.cls" class="relative slide">
                 <div data-ng-if="slide.imgUrl" class="img-wrap">
-                    <img data-ng-src="{{slide.imgUrl}}" />
+                    <img data-ng-src="{{images + slide.imgUrl}}" />
                 </div>
                 <h1 data-ng-if="slide.hero" class="hero">{{slide.hero}}</h1>
                 <h1 data-ng-if="slide.title" class="mid">{{slide.title}}</h1>
