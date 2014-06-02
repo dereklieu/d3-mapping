@@ -5,7 +5,7 @@ var ball = [
     {size: .5}
 ];
 
-var width = 960;
+var width = 600;
 var height = 600;
 
 var scale = d3.scale.linear()
@@ -15,6 +15,7 @@ var scale = d3.scale.linear()
 var sandbox = d3.select('#sandbox');
 
 var svg = sandbox.append('svg:svg')
+    .style('border', '0.1em solid #eee')
     .attr('width', width + 'px')
     .attr('height', height + 'px');
 
