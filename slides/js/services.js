@@ -177,6 +177,18 @@ angular.module('talkyApp.services', [])
             cap: 'SVG is a set of DOM specifications that allow us to draw vector graphics (circles, lines, etc)'
         },
 
+        {
+
+        },
+
+        {
+
+        },
+
+        {
+
+        },
+
     ];
 
     return slides;

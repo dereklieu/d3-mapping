@@ -44,11 +44,6 @@ h1 span {
     background: teal;
 }
 
-.ball {
-    fill: red;
-    cursor: pointer;
-}
-
 .label {
     font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
     font-size: 1em;
@@ -61,4 +56,10 @@ h1 span {
 .map {
     position:relative;
     height:400px;
+}
+
+.number {
+    text-anchor: middle;
+    fill: #333;
+    cursor: pointer;
 }
