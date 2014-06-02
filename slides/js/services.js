@@ -170,10 +170,11 @@ angular.module('talkyApp.services', [])
         {
             title: 'Let\'s talk about scalar vector grahics',
             cap: 'Note: ie9 and above only!'
-
         },
 
         {
+            imgUrl: 'svg-primer.jpg',
+            cap: 'SVG is a set of DOM specifications that allow us to draw vector graphics (circles, lines, etc)'
         },
 
     ];
