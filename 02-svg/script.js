@@ -1,12 +1,16 @@
-var data = [
-    {   x: 100,     y: 120  },
-    {   x: 200,     y: 500  },
-    {   x: 550,     y: 300  },
-    {   x: 800,     y: 400  }
+var numbers = d3.range(0, 10);
+// [0, 1, 2, 3, ..., 8, 9]
+
+var ball = [
+    {size: .5}
 ];
 
 var width = 960;
 var height = 600;
+
+var scale = d3.scale.linear()
+    .range([20, width - 20])
+    .domain(d3.extent(numbers));
 
 var sandbox = d3.select('#sandbox');
 
@@ -14,34 +18,33 @@ var svg = sandbox.append('svg:svg')
     .attr('width', width + 'px')
     .attr('height', height + 'px');
 
-var balls = svg.selectAll('.ball')
-    .data(data)
+var circle = svg.selectAll('.circle')
+    .data(ball)
   .enter().append('circle')
-    .attr('cx', 0)
-    .attr('cy', 0)
-    .attr('r', 50)
-    .attr('class', 'ball')
-    .on('mouseover', function(d, i) {
-        data[i].x = Math.random() * width;
-        data[i].y = Math.random() * height;
+    .attr('cx', function(d) { return width * 0.5 })
+    .attr('cy', function(d) { return height * 0.5 })
+    .attr('r', function(d) { return 0 })
+    .attr('fill', 'salmon')
+
+var text = svg.selectAll('.number')
+    .data(numbers)
+  .enter().append('text')
+    .attr('x', function(d) { return scale(d); })
+    .attr('y', -20)
+    .attr('class', 'number')
+    .text(function(d) { return d; })
+    .on('click', function(d) {
+        ball[0].size = d / 10;
+        console.log(ball);
     });
 
-var labels = svg.selectAll('.label')
-    .data(data)
-  .enter().append('text')
-    .text(function(d, i) { console.log(d); return '#' + i; })
-    .attr('x', 0)
-    .attr('y', 0)
-    .attr('class', 'label');
+text.transition()
+    .duration(120)
+    .delay(function(d, i) { return i * 80; })
+    .attr('y', 50);
 
 setInterval(function() {
-    balls.transition()
-        .duration(200)
-        .attr('cx', function(d) { return d.x })
-        .attr('cy', function(d) { return d.y });
-
-    labels.transition()
-        .duration(200)
-        .attr('x', function(d) { return d.x })
-        .attr('y', function(d) { return d.y });
-}, 400);
+    circle.transition()
+        .duration(400)
+        .attr('r', function(d) { console.log(d); return scale(d.size * 10) / 2 });
+}, 1000);
