@@ -79,29 +79,105 @@ angular.module('talkyApp.services', [])
 
         {
             imgUrl: 'binding-04-select-all.png',
-            cap: 'In jQuery, this would return an empty jQuery object. That\'s because there are no elements with a class of "bar" in sandbox.',
+            cap: 'At this point, there are no elements with a class of "bar." Unlike jQuery, in which $(\'.bar\') would return an empty query, you\'re telling d3 what kind of element you *want* there to be.',
             cls: 'vim'
         },
 
         {
             imgUrl: 'binding-05-data.png',
-            cap: 'D3, on the other hand, expects you to show it some data.',
+            cap: '...And now you\'re telling d3 what kind of data to attach to this element',
             cls: 'vim'
         },
 
-        /* TODO
         {
-            cap: 'http://bl.ocks.org/mbostock/3808218',
+            imgUrl: 'binding-06-monkeys.png',
+            cap: 'This is where things get cool.',
+            cls: 'vim'
+        },
+
+        {
+            imgUrl: 'binding-07-monkeys.png',
+            cap: '(Remember, this is our data.)',
+            cls: 'vim',
+        },
+
+        {
+            imgUrl: 'binding-08-enter.png',
+            cap: 'With d3.selection.enter(), d3 will create a \'something\' for every piece of data that wasn\'t already visualized on the page. Then we tell d3 to make that \'something\' a span element with a class of "bar". If you\'re very good at Excel or a database tool, you can think of d3.selection.enter() as a join. For more reading on the enter/exit pattern, see bl.ocks.org/mbostock/3808218',
+            cls: 'vim'
+        },
+
+        {
+            hero: 'stop',
+            cap: 'With this much code, we\'ve already bound data to our document.'
+        },
+
+        {
+            title: 'Let\'s take a look at our data.',
+            decks: ['Open your console. On Chrome it\'s Command+Option+J (Mac) or Control+Shift+J (Windows/Linux).']
+        },
+
+        {
+            imgUrl: 'binding-09-selector-all.png',
+            cap: 'Type this into your console.'
+        },
+
+        {
+            imgUrl: 'binding-10-__data__.png',
+            cap: 'Now we know where d3 is putting all that data (remember, everything in javascript is an object, and you can access it\'s properties using dot notation—even DOM elements).'
+        },
+
+        {
+            imgUrl: 'binding-11-manipulation.png',
+            cap: 'You can even change the data. Try it!'
+        },
+
+        {
+            title: 'Neat, right?',
+            decks: ['How did we do that?']
+        },
+
+        {
+            imgUrl: 'binding-12-interval.png',
+            cap: 'Every second, we tell d3 to update the height and y-position (or top, in css lingo) of the bar according to the data.',
+            cls: 'vim'
+        },
+
+        {
+            imgUrl: 'binding-13-d-for-data.png',
+            cap: 'The "d" is for data.',
+            cls: 'vim'
+        },
+
+        {
+            imgUrl: 'binding-14-api.png',
+            cap: 'A little bit on the d3 api.',
+            cls: 'vim'
+        },
+
+        {
+            title: 'Congratulations!',
+            decks: ['Now you know data-binding-fu.'],
+            cap: 'If you want to nerd out afterwards, come talk to me about the differences between d3.selection.data() and jQuery\'s $.data()'
+        },
+
+        {
+            hero: 'Whew.',
+            cls: 'lightsalmon',
+            cap: 'Any questions? It gets a lot more interesting from here =).'
+        },
+
+        {
+            title: 'Let\'s talk about scalar vector grahics',
+            cap: 'Note: ie9 and above only!'
+
         },
 
         {
         },
-        */
-
 
     ];
 
     return slides;
 }])
-
 ;
