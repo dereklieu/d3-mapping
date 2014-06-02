@@ -18,6 +18,10 @@ label {
     line-height: 1.25em;
 }
 
+h1 span {
+    font-weight:normal;
+    text-decoration:underline;
+}
 #sandbox {
     margin-top: 40%;
     text-align: center;
@@ -52,4 +56,9 @@ label {
     fill: #fff;
     text-anchor: middle;
     cursor: pointer;
+}
+
+.map {
+    position:relative;
+    height:400px;
 }
