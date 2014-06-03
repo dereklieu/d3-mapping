@@ -12,7 +12,8 @@ h4,
 h5,
 h6,
 div,
-label {
+label,
+li{
     font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
     font-size: 1em;
     line-height: 1.25em;
@@ -58,7 +59,6 @@ h1 span {
     position:relative;
     height:400px;
 }
-
 .number {
     text-anchor: middle;
     fill: #333;
