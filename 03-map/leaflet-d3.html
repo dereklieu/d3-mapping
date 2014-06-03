@@ -14,7 +14,7 @@
 	}
 </style>
 <body>
-	<h1>I am a leaflet map with <span>Stamen Toner</span> tiles, using d3.geo.path.</h1>
+	<h1>I am a leaflet map with <span>Stamen Toner</span> tiles, using <span>d3.geo.path.</span></h1>
 	<div id="map" class="map"></div>
 	<script src="../d3.v3.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -24,58 +24,71 @@
 	// initialize the map on the "map" div with a given center and zoom
 	// disable zoomAnimation so that the svg overlay will not show a lag
 	// when map is zoomed
-	var map = L.map('map',{zoomAnimation:false}).setView([37.8471973,-97.8166684], 4);
+	var map = L.map('map',{
+		zoomAnimation:false
+		}).setView([37.8471973,-97.8166684], 4);
 
 	var stamen = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',{
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.'
 	});
 	map.addLayer(stamen);
 
-	// In the next example we'll show you why this might not be necessary 
-	// when using MapBox maps. Comes with benefits...
+	// In the next example we'll show you why it would not be necessary
+	// to create tile layer when using MapBox maps. Benefits!
 
-	// var mb = L.tileLayer('http://api.tiles.mapbox.com/v3/jue.iddhipbe/{z}/{x}/{y}.png',{
-	// 	attribution:'<a href="https://www.mapbox.com/about/maps/">&copy; MapBox &copy; OpenStreetMap</a>'
-	// });
-	// map.addLayer(mb);
+	// Add an SVG element to Leaflet’s overlay pane -
+	// Leaflet automatically repositions the overlay pane when the map pans;
+	// The svg element is initialized with no width or height;
+	// the dimensions must be set dynamically because they change on zoom.
+	var svg = d3.select(map.getPanes().overlayPane).append("svg");
 
-	var svg = d3.select(map.getPanes().overlayPane).append("svg"),
-		g = svg.append("g");
+	// Add g (group) element -
+	// used to translate the SVG elements so that the top-left corner 
+	// of the svg ⟨0,0⟩ to correspond to Leaflet’s layer origin
+	var g = svg.append("g");
 
-	d3.json('us-states.json',function(data){
+	d3.json('us-states.json',function(error, data){
 
-		var transform = d3.geo.transform({point: projectPoint}),
-			path = d3.geo.path().projection(transform);
+		// https://github.com/mbostock/d3/wiki/Geo-Streams
+		// Use Leaflet to implement a D3 geometric transformation.
+		// Creates a new stream transform using the hash of methods
+		var transform = d3.geo.transform({
+			point: function(x,y) {
+				var point = map.latLngToLayerPoint(new L.LatLng(y,x));
+				this.stream.point(point.x,point.y);
+			}
+		});
 
+		//Creates a new geographic path generator that converts GeoJSON to svg
+		var path = d3.geo.path().projection(transform);
+
+		// each feature is path element within the g
 		var feature = g.selectAll("path")
 			.data(data.features)
-		  .enter().append("path");
+		  .enter()
+			.append("path");
 
-		feature.attr("d", path);
-
+		// Fired when the map needs to redraw its content
+		// (this usually happens on map zoom or load).		
 		map.on("viewreset", reset);
 		reset();
 
 		// Reposition the SVG to cover the features.
 		function reset() {
+			// compute projected bounding box
 			var bounds = path.bounds(data),
 				topLeft = bounds[0],
 				bottomRight = bounds[1];
-		
-				svg.attr("width", bottomRight[0] - topLeft[0])
-					.attr("height", bottomRight[1] - topLeft[1])
-					.style("left", topLeft[0] + "px")
-					.style("top", topLeft[1] + "px");
-		
-				g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
-		
-				feature.attr("d", path);
-		}
 
-		// Use Leaflet to implement a D3 geometric transformation.
-		function projectPoint(x, y) {
-			var point = map.latLngToLayerPoint(new L.LatLng(y, x));
-			this.stream.point(point.x, point.y);
+			svg.attr("width", bottomRight[0] - topLeft[0])
+				.attr("height", bottomRight[1] - topLeft[1])
+				.style("left", topLeft[0] + "px")
+				.style("top", topLeft[1] + "px");
+		
+			g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
+
+			// d stands for "description for path"
+			feature.attr("d", path);
 		}
 	})
 
