@@ -133,8 +133,8 @@ angular.module('talkyApp.services', [])
         },
 
         {
-            title: 'Neat, right?',
-            decks: ['How did we do that?']
+            imgUrl: 'batman-awe.gif',
+            cap: 'Neat, right?'
         },
 
         {
@@ -168,27 +168,108 @@ angular.module('talkyApp.services', [])
         },
 
         {
-            title: 'Let\'s talk about scalar vector grahics',
-            cap: 'Note: ie9 and above only!'
+            title: 'Let\'s talk about svg',
+            cap: 'D3 is a great library even if you aren\'t using svg, but it really shines when you are. Note: IE9 and above!'
         },
 
         {
-            imgUrl: 'svg-primer.jpg',
-            cap: 'SVG is a set of DOM specifications that allow us to draw vector graphics (circles, lines, etc)'
+            imgUrl: 'svg_01_svg.png',
+            cap: 'So let\'s make some svg with d3. Open 02-svg/index.html, then open 02-svg/script.js in a text editor.'
         },
 
         {
-
+            imgUrl: 'svg-02-scale.png',
+            cls: 'vim',
+            cap: 'If you\'ve gone through any d3 tutorials, they all start by defining with and heights (and sometimes margins)'
         },
 
         {
-
+            title: 'good boundaries',
+            decks: ['(make good neighbors)'],
+            cap: 'It turns out, knowing your bounds are very important if you want to plot things. This leads us to...'
         },
 
         {
-
+            title: 'd3 scales',
+            decks: ['Turning things into other things.'],
+            cap: '...scales! Scales turn all sorts of things into all sorts of other things'
         },
 
+        {
+            imgUrl: 'svg-02-scale.png',
+            cap: 'To make a scale, you need to define an input domain and an output range. A linear scale maps every input value to a single output value.',
+            cls: 'vim'
+        },
+
+        {
+            title: 'POP QUIZ',
+            decks: ['var x = d3.scale.linear()', '.domain([1, 5])', '.range([100, 500])', '---', 'x(3) = ?']
+        },
+
+        {
+            imgUrl: 'svg-03-svg.png',
+            cap: 'And here is the code that appends an svg and draws a circle on it. The thing you should take away here is that svg elements expect certain attributes, just like html elements. Case in point: circle elements require x and y coordinates and a radius. For more on basic svg shapes: http://www.w3.org/TR/SVG11/shapes.html',
+            cls: 'vim'
+        },
+
+        {
+            imgUrl: 'svg-04-return.png',
+            cap: 'And here we draw some numbers. Take a look at how the data we\'re binding is being used to set the x attribute and text value of these svg text elements.',
+            cls: 'vim'
+        },
+
+        {
+            imgUrl: 'svg-04-click.png',
+            cap: 'Defining an on-click function that changes the data attribute attached to our circle radius. The code in setInterval() will re-draw the circle every 400 milliseconds. Try clicking on a number!',
+            cls: 'vim'
+        },
+
+        // Part of the talk where we discuss the different mapping stacks.
+        {
+            hero: 'Maps',
+            cap: 'That was a quick primer. Let\'s get to the part of the talk we all came for: mapping.'
+        },
+
+        {
+            imgUrl: 'disjointed.png',
+            cap: 'When we think of the maps we see on the internet, the thing we were thinking about is millions of 256 x 256 pixel images.'
+        },
+
+        {
+            imgUrl: 'albers.png',
+            cap: 'More and more, map tiles are being replaced with map vectors: lines, rectangles, and other shapes. These have advantages and disadvantages, which we will cover in a sec.'
+        },
+
+        {
+            imgUrl: 'woodstock-2.png',
+            cap: 'The important thing to know is that you can create tiled maps, vector maps, or combo maps that overlay vectors on top of tiles, using d3 and a few other open-source libraries.'
+        },
+
+        {
+            title: 'A run-down',
+            decks: ['Where we talk about d3.js, leaflet.js, mapbox.com,', 'and all the interesting combos of the three.'],
+            cap: 'When you make a map these days, regardless of what kind of map you make, you will probably touch at least one of these tools.'
+        },
+
+        {
+            title: 'Mapbox',
+            decks: ['A place to host your map tiles or vector data', 'Maintains Tilemill, a tool to produce custom map tiles', 'Contributes to leaflet.js']
+        },
+
+        {
+            title: 'Leaflet',
+            decks: ['How tiles become maps', 'Zooming, panning, loading tile layers, tooltips', 'Works as an interaction/events layer in conjunction with d3']
+        },
+
+        {
+            title: 'D3',
+            decks: ['Vectors, boundaries, shapes, overlays', 'Dynamic data loading using topojson/geojson', 'Flexible, and easy to adjust once you\'re set up']
+        },
+
+        {
+            title: 'Let\'s walk through some maps',
+            caption: 'Follow this url to the demo that we will put together at the end: http://bl.ocks.org/jueyang/e8c9473bc2d30d943fec'
+        }
     ];
 
     return slides;

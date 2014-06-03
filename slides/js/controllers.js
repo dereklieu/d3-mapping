@@ -6,7 +6,8 @@ angular.module('talkyApp.controllers', [])
     $scope.images = 'img/'
     $scope.slides = slideData;
     $scope.length = $scope.slides.length;
-    $scope.current = $scope.length - 1;
+    //$scope.current = $scope.length - 1;
+    $scope.current = 0;
 }])
 
 ;

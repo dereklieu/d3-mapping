@@ -9,8 +9,8 @@ var width = 600;
 var height = 600;
 
 var scale = d3.scale.linear()
-    .range([20, width - 20])
-    .domain(d3.extent(numbers));
+    .domain(d3.extent(numbers))
+    .range([20, width - 20]);
 
 var sandbox = d3.select('#sandbox');
 
@@ -34,9 +34,10 @@ var text = svg.selectAll('.number')
     .attr('y', -20)
     .attr('class', 'number')
     .text(function(d) { return d; })
-    .on('click', function(d) {
+    .on('click', function(d, i, el) {
+        // a high-light should go here?
+        console.log(this.getAttribute('x'));
         ball[0].size = d / 10;
-        console.log(ball);
     });
 
 text.transition()
@@ -47,5 +48,5 @@ text.transition()
 setInterval(function() {
     circle.transition()
         .duration(400)
-        .attr('r', function(d) { console.log(d); return scale(d.size * 10) / 2 });
-}, 1000);
+        .attr('r', function(d) { return scale(d.size * 10) / 2 });
+}, 600);
