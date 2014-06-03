@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 <body>
-	<h1>I am a leaflet map with <span>OpenStreetMap</span> tiles, using my own L.geoJson() method.</h1>
+	<h1>I am a leaflet map with <span>OpenStreetMap</span> tiles, using my own <span>L.geoJson()</span> method.</h1>
 	<div id="map" class="map"></div>
 	<script src="../d3.v3.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
@@ -26,7 +26,7 @@
 
 		// load the json with ajax - using d3.json here since we are talking d3 :)
 		// but any ajax (such as jquery) can do this
-		d3.json('us-states.json',function(data){
+		d3.json('us-states.json',function(error, data){
 
 			// set manual color breaks
 			function getColor(d) {
@@ -53,9 +53,10 @@
 					};
 				},
 				onEachFeature:function(feature,layer){
-					var popupContent = 'Population Density: <b>' +
-						feature.properties.density +
-						'</b> people/mi<sup>2</sup>';
+					var popupContent = 'Population Density in ' + 
+						feature.properties.name + '<b>' +
+						feature.properties.density + ':</b> ' + 
+						'people/mi<sup>2</sup>';
 
 					layer.bindPopup(popupContent);
 				}
