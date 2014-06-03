@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Leaflet with a layer of United States, using some d3</title>
+    <title>Leaflet + d3</title>
     <meta charset="utf-8">
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="../style.css" />
@@ -47,7 +47,7 @@
 	// of the svg ⟨0,0⟩ to correspond to Leaflet’s layer origin
 	var g = svg.append("g");
 
-	d3.json('us-states.json',function(error, data){
+	d3.json('us-states-pop-density.json',function(error, data){
 
 		// https://github.com/mbostock/d3/wiki/Geo-Streams
 		// Use Leaflet to implement a D3 geometric transformation.
