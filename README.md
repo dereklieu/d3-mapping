@@ -1,4 +1,4 @@
-d3-mapping
-==========
+Mapping with D3
+===============
 
-Using d3 to make maps
+Presentation notes for June 26, 2014 at GWU Funder Hall.
